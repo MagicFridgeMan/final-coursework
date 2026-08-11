@@ -2,6 +2,6 @@ def example() -> int:
     return 2
 
 example :: A
-return_example:: Int -> A
+private return_example:: Int -> A
 
-start() -> return_start(2)
+start() -> return_example(2)
