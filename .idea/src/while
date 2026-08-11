@@ -1,0 +1,8 @@
+def while(x: int) -> x
+    y = 0
+    while (x > y):
+        y = y + 1
+
+while(x) -> l1(x, 0)
+l1(x, y) -> l2(x, y) | x > y
+l2(x, y) -> l1(x, y + 1)ss
