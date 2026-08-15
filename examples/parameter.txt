@@ -1,0 +1,7 @@
+def parameter(x:Int) -> Int:
+    return x
+
+parameter :: Int -> A
+private return_parameter :: Int -> A
+
+parameter(x) -> return_parameter(x)

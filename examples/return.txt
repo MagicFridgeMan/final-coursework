@@ -1,0 +1,7 @@
+def example() -> int:
+    return 2
+
+example :: A
+private return_example:: Int -> A
+
+start() -> return_example(2)
