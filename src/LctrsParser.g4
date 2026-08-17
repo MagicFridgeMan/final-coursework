@@ -66,17 +66,10 @@ assigment:
     ;
 
 expr:
-    IDENTIFIER (intop (IDENTIFIER|INTEGER))+
+    expr (MUL|IDIV|MOD) expr
+    | expr (ADD|SUB) expr
     | IDENTIFIER
     | INTEGER
-    ;
-
-intop:
-    | ADD
-    | MINUS
-    | MUL
-    | MOD
-    | IDIV
     ;
 
 return_stmt:
