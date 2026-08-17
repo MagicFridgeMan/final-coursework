@@ -42,7 +42,7 @@ COMMA              : ',';
 ARROW              : '->';
 ASSIGN             : '=';
 ADD                : '+';
-MINUS              : '-';
+SUB                : '-';
 MUL                : '*';
 MOD                : '%';
 IDIV               : '//';
