@@ -8,8 +8,15 @@ options {
     tokenVocab = LctrsLexer;
 }
 
+// def func_name (parameters) -> returnType: body
 funcdef:
-    DEF IDENTIFIER OPEN_PAREN paramlist CLOSE_PAREN ARROW vartype COLON body return_stmt?
+    DEF IDENTIFIER OPEN_PAREN paramlist CLOSE_PAREN ARROW vartype COLON body
+    ;
+
+paramlist:
+    parameter
+    | parameter (COMMA parameter)*
+    |
     ;
 
 parameter:
@@ -20,12 +27,6 @@ vartype:
     INT
     ;
 
-paramlist:
-    parameter
-    | parameter (COMMA parameter)*
-    |
-    ;
-
 body:
     NEWLINE INDENT stmt+ DEDENT?
     ;
@@ -33,6 +34,7 @@ body:
 stmt:
     assigment
     | compound_stmt
+    | return_stmt
     ;
 
 compound_stmt:
@@ -73,5 +75,5 @@ expr:
     ;
 
 return_stmt:
-    NEWLINE INDENT? 'return' IDENTIFIER
+    RETURN expr
     ;
