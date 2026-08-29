@@ -70,6 +70,7 @@ assigment:
 expr:
     expr (MUL|IDIV|MOD) expr
     | expr (ADD|SUB) expr
+    | expr comparator expr
     | IDENTIFIER
     | INTEGER
     ;
