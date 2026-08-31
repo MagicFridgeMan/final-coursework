@@ -68,9 +68,9 @@ assigment:
     ;
 
 expr:
-    expr (MUL|IDIV|MOD) expr
-    | expr (ADD|SUB) expr
-    | expr comparator expr
+    expr operation=(MUL|IDIV|MOD) expr
+    | expr operation=(ADD|SUB) expr
+    | test
     | IDENTIFIER
     | INTEGER
     ;
