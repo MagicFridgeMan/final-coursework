@@ -47,7 +47,7 @@ public class ExpressionVisitor extends LctrsParserBaseVisitor<Expression> {
 
     /**
      * A visitor method for a test, which is defined by the use of a comparison operator within some expression.
-     * A test is definied seperately within the parser file used for ANTLR and therefore we use a different visitor method
+     * A test is defined seperately within the parser file used for ANTLR and therefore we use a different visitor method
      * to access it. However, this is still and operation and therefore we can still class it as such when building our
      * LCTRS tree.
      *
