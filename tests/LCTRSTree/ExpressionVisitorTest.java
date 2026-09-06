@@ -1,3 +1,5 @@
+package LCTRSTree;
+
 import LCTRSTree.Expressions.Expression;
 import LCTRSTree.Visitors.ExpressionVisitor;
 import org.antlr.v4.runtime.CharStream;
