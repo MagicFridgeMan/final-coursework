@@ -8,15 +8,12 @@ options {
     tokenVocab = LctrsLexer;
 }
 
-// def func_name (parameters) -> returnType: body
 funcdef:
-    DEF IDENTIFIER OPEN_PAREN paramlist CLOSE_PAREN ARROW vartype COLON body
+    DEF IDENTIFIER OPEN_PAREN parameters? CLOSE_PAREN ARROW vartype COLON body
     ;
 
-paramlist:
-    parameter
-    | parameter (COMMA parameter)*
-    |
+parameters:
+    parameter (COMMA parameter)*
     ;
 
 parameter:
@@ -43,14 +40,14 @@ compound_stmt:
     ;
 
 if_stmt:
-    IF test COLON body (ELSE COLON body)?
+    IF constraint COLON body (ELSE COLON body)?
     ;
 
 while_stmt:
-    WHILE test COLON body
+    WHILE constraint COLON body
     ;
 
-test:
+constraint:
     expr comparator expr
     ;
 
@@ -70,7 +67,6 @@ assigment:
 expr:
     expr operation=(MUL|IDIV|MOD) expr
     | expr operation=(ADD|SUB) expr
-    | test
     | IDENTIFIER
     | INTEGER
     ;
