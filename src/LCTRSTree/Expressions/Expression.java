@@ -1,4 +1,4 @@
-package LCTRSTree;
+package LCTRSTree.Expressions;
 
 public interface Expression {
 
