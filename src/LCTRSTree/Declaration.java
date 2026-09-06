@@ -1,5 +1,10 @@
 package LCTRSTree;
 
+/**
+ * The class for storing information about a declaration of an LCTRS node for CORA program. All of its fields
+ * can be access by using the public getter methods.
+ */
+
 public class Declaration {
     private final boolean isPrivate;
     private final String name;
