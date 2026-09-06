@@ -1,4 +1,4 @@
-package LCTRSTree;
+package LCTRSTree.Expressions;
 
 /**
  * A constant object of an expression which is created when a constant is found when parsing through

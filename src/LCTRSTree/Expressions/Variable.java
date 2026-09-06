@@ -1,4 +1,4 @@
-package LCTRSTree;
+package LCTRSTree.Expressions;
 
 /**
  * A variable type of expression which is created when a variable is found when parsing through
