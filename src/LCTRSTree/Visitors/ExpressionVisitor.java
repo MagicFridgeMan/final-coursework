@@ -1,7 +1,7 @@
 package LCTRSTree.Visitors;
 
+import LCTRSTree.Expressions.*;
 import parser.*;
-import LCTRSTree.*;
 
 /**
  * Visitor class for an expression within the ANTLR parse tree created that allows for the creation and return of an
@@ -56,9 +56,9 @@ public class ExpressionVisitor extends LctrsParserBaseVisitor<Expression> {
      * found within the comparator token.
      */
     @Override
-    public Expression visitTest(LctrsParser.TestContext ctx){
+    public Expression visitConstraint(LctrsParser.ConstraintContext ctx){
         Expression left = visit(ctx.expr(0));
         Expression right = visit(ctx.expr(1));
-        return new Operation(left, ctx.comparator().getText(), right);
+        return new Constraint(left, ctx.comparator().getText(), right);
     }
 }
