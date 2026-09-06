@@ -1,4 +1,4 @@
-import LCTRSTree.Expression;
+import LCTRSTree.Expressions.Expression;
 import LCTRSTree.Visitors.ExpressionVisitor;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -26,6 +26,14 @@ class ExpressionVisitorTest {
         return visitor.visit(parser.expr());
     }
 
+    public Expression parseConstraint(String input) {
+        CharStream stream = CharStreams.fromString(input);
+        LctrsLexer lexer = new LctrsLexer(stream);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        LctrsParser parser = new LctrsParser(tokens);
+        return visitor.visit(parser.constraint());
+    }
+
     @Test
     void bareVariable() {
         assertEquals("x", parseExpr("x").toString());
@@ -48,6 +56,11 @@ class ExpressionVisitorTest {
 
     @Test
     void comparison() {
-        assertEquals("(x < y)", parseExpr("x < y").toString());
+        assertEquals("x < y", parseConstraint("x < y").toString());
+    }
+
+    @Test
+    void comparisonAndExpressionTest() {
+        assertEquals("x < (y + 1)", parseConstraint("x < y + 1").toString());
     }
 }
