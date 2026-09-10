@@ -1,10 +1,6 @@
-def expression(x):
-    y = x + 1
-    return y
-
 expression:: Int -> A
 private l1:: Int -> A
-private return_expression :: Int -> A
+return_expression :: Int -> A
 
 
 expression(x) -> l1(x + 1)

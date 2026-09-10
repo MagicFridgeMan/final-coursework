@@ -1,12 +1,9 @@
-def whileloop(x: int) -> x:
-    y = 0
-    while (x > y):
-        y = y + 1
-
 whileloop :: Int -> A
 private l1 :: Int -> Int -> A
 private l2 :: Int -> Int -> A
+return_whileloop :: Int -> A
 
 while(x) -> l1(x, 0)
 l1(x, y) -> l2(x, y) | x > y
 l2(x, y) -> l1(x, y + 1)
+l1(x, y) -> return_whileloop(y)

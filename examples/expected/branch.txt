@@ -1,16 +1,8 @@
-def branch(x: int) -> int:
-    if x > 0:
-        y = x + 1
-    else:
-        y = x - 1
-    return y
-
 branch :: Int -> A
 private l1:: Int -> A
 private l2:: Int -> A
-priate l3 :: Int -> A
-private return_expression :: Int -> A
-
+private l3 :: Int -> A
+return_expression :: Int -> A
 
 branch(x) -> l1(x)
 l1(x) -> l2(x + 1) | x > 0
