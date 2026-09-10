@@ -1,3 +1,3 @@
 def expression(x: int) -> int:
-    y = x + y * 2
+    y = x * 2
     return y
