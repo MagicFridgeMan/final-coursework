@@ -32,7 +32,7 @@ NEWLINE: ({this.atStartOfInput()}? SPACES | ( '\r'? '\n' | '\r' | '\f') SPACES?)
 
 SKIP_: SPACES -> skip;
 
-IDENTIFIER: LETTER+ '_' LETTER+;
+IDENTIFIER: LETTER+ ('_' LETTER+)*;
 
 OPEN_PAREN         : '(' {this.openBrace();};
 CLOSE_PAREN        : ')' {this.closeBrace();};
