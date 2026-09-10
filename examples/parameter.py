@@ -1,2 +1,2 @@
-def parameter(x: Int) -> Int:
+def parameter(x: int) -> int:
     return x
