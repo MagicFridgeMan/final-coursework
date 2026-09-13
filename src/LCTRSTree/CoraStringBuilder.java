@@ -19,22 +19,24 @@ public class CoraStringBuilder {
         StringBuilder builder = new StringBuilder();
             for (Declaration d : program.getDeclarations()) {
                 String privateString = d.isPrivate() ? "private " : "";
-                builder.append(privateString);
-                builder.append(d.getName() + " :: ");
-                builder.append("Int -> ".repeat(d.getSorts()));
-                builder.append("A");
-                builder.append("\n");
+                builder.append(privateString)
+                        .append(d.getName())
+                        .append(" :: ")
+                        .repeat("Int -> ", d.getSorts())
+                        .append("A")
+                        .append("\n");
             }
-            builder.append("\n");
 
             for (Rule r : program.getRules()) {
-                builder.append(r.getSourceRule());
-                builder.append("(" + argsToString(r.getArguments()) + ")");
-                builder.append(" -> ");
-                builder.append(r.getTargetRule());
-                builder.append("(" + paramsToString(r.getParameters()) + ")");
                 String constraint = (r.getConstraint().isEmpty()) ? "" : " | " + r.getConstraint();
-                builder.append(constraint);
+
+                builder.append("\n")
+                        .append(r.getSourceRule())
+                        .append("(" + argsToString(r.getArguments()) + ")")
+                        .append(" -> ")
+                        .append(r.getTargetRule())
+                        .append("(" + paramsToString(r.getParameters()) + ")")
+                        .append(constraint);
             }
             return builder.toString();
     }
