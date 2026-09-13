@@ -2,10 +2,10 @@ branch :: Int -> A
 private l1:: Int -> A
 private l2:: Int -> A
 private l3 :: Int -> A
-return_expression :: Int -> A
+private return_branch :: Int -> A
 
 branch(x) -> l1(x)
-l1(x) -> l2(x + 1) | x > 0
-l1(x) -> l3(x - 1) | x < 0
-l2(y) -> return_expression(y)
-l3(y) -> return_expression(y)
+l1(x) -> l2(x, x + 1) | x > 0
+l1(x) -> l3(x, x - 1) | x <= 0
+l2(x, y) -> return_branch(y)
+l3(x, y) -> return_branch(y)
