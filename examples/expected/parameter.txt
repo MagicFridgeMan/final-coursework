@@ -1,4 +1,4 @@
 parameter :: Int -> A
-return_parameter :: Int -> A
+private return_parameter :: Int -> A
 
 parameter(x) -> return_parameter(x)
