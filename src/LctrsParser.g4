@@ -29,14 +29,14 @@ body:
     ;
 
 stmt:
-    assigment
-    | compound_stmt
-    | return_stmt
+    (assignment
+    | return_stmt) NEWLINE
+    |compound_stmt
     ;
 
 compound_stmt:
     if_stmt
-    while_stmt
+    | while_stmt
     ;
 
 if_stmt:
@@ -49,6 +49,7 @@ while_stmt:
 
 constraint:
     expr comparator expr
+    | OPEN_PAREN expr comparator expr CLOSE_PAREN
     ;
 
 comparator:
@@ -60,7 +61,7 @@ comparator:
     | GT_EQ
     ;
 
-assigment:
+assignment:
     IDENTIFIER ASSIGN expr
     ;
 
