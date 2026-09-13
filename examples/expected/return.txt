@@ -1,4 +1,4 @@
 return_example :: A
-return_return_example :: Int -> A
+private return_return_example :: Int -> A
 
 return_example() -> return_return_example(2)
