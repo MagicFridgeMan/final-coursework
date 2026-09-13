@@ -1,5 +1,5 @@
-def whileloop(x: int) -> x:
+def whileloop(x: int) -> int:
     y = 0
-    while (x > y):
+    while x > y:
         y = y + 1
     return y

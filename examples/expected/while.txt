@@ -1,9 +1,11 @@
 whileloop :: Int -> A
 private l1 :: Int -> Int -> A
 private l2 :: Int -> Int -> A
-return_whileloop :: Int -> A
+private l3 :: Int -> Int -> A
+private return_whileloop :: Int -> A
 
-while(x) -> l1(x, 0)
-l1(x, y) -> l2(x, y) | x > y
-l2(x, y) -> l1(x, y + 1)
-l1(x, y) -> return_whileloop(y)
+whileloop(x) -> l1(x, 0)
+l1(x, y) -> l2(x, y)
+l2(x, y) -> l3(x, y) | x <= y
+l2(x, y) -> l2(x, (y + 1)) | x > y
+l3(x, y) -> return_whileloop(y)
