@@ -1,0 +1,15 @@
+multiwhile :: Int -> A
+private l1 :: Int -> Int -> A
+private l2 :: Int -> Int -> Int -> A
+private l3 :: Int -> Int -> Int -> A
+private l4 :: Int -> Int -> Int -> A
+private l5 :: Int -> Int -> Int -> A
+private return_multiwhile :: Int -> A
+
+multiwhile(x) -> l1(x, 0)
+l1(x, y) -> l2(x, y, 1)
+l2(x, y, z) -> l3(x, y, z)
+l3(x, y, z) -> l4(x, y, z) | x <= y
+l3(x, y, z) -> l5(x, (y + 1), z) | x > y
+l5(x, y, z) -> l3(x, y, (z * 2))
+l4(x, y, z) -> return_multiwhile(z)

@@ -1,0 +1,8 @@
+multi_expression :: Int -> A
+private l1 :: Int -> Int -> A
+private l2 :: Int -> Int -> Int -> A
+private return_multi_expression :: Int -> A
+
+multi_expression(x) -> l1(x, (x + 1))
+l1(x, y) -> l2(x, y, (y + 2))
+l2(x, y, z) -> return_multi_expression(y)
