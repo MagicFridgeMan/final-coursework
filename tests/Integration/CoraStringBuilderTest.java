@@ -43,6 +43,14 @@ class CoraStringBuilderTest {
     }
 
     @Test
+    void testCoraStringBuilderMultiExpression() throws IOException {
+        String expected = readFile("examples/expected/multiexpression.txt");
+        String actual = PythonToCoraString("examples/multiexpression.py");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     void testCoraStringBuilderBranch() throws IOException {
         String expected = readFile("examples/expected/branch.txt");
         String actual = PythonToCoraString("examples/branch.py");
@@ -54,6 +62,14 @@ class CoraStringBuilderTest {
     void testCoraStringBuilderWhile() throws IOException {
         String expected = readFile("examples/expected/while.txt");
         String actual = PythonToCoraString("examples/while.py");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void testCoraStringBuilderMultiWhile() throws IOException {
+        String expected = readFile("examples/expected/multiwhile.txt");
+        String actual = PythonToCoraString("examples/multiwhile.py");
 
         Assertions.assertEquals(expected, actual);
     }
