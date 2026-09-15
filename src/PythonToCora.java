@@ -5,8 +5,13 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import parser.LctrsLexer;
 import parser.LctrsParser;
 
-void main(String[] args) {
-    {
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class PythonToCora {
+
+    static void main(String[] args) {
         if (args.length != 2) {
             throw new IllegalArgumentException("Wrong number of arguments");
         }
@@ -28,16 +33,13 @@ void main(String[] args) {
             FunctionVisitor visitor = new FunctionVisitor();
             LctrsParser.FuncdefContext tree = parser.funcdef();
             visitor.visit(tree);
-            IO.println(tree.toStringTree(parser));
             CoraStringBuilder builder = new CoraStringBuilder(visitor.getProgram());
-            IO.println(builder.toCoraString());
             CoraFileWriter.Write(builder.toCoraString(), outname);
             IO.println("Cora program written to " + outname + ".txt");
             fis.close();
         } catch (IOException e) {
             IO.println("Could not open file " + fileName);
         }
-
-
     }
 }
+
