@@ -35,6 +35,14 @@ class CoraStringBuilderTest {
     }
 
     @Test
+    void testCoraStringBuilderMultiParameter() throws IOException {
+        String expected = readFile("examples/expected/parameter.txt");
+        String actual = PythonToCoraString("examples/parameter.py");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     void testCoraStringBuilderExpression() throws IOException {
         String expected = readFile("examples/expected/expression.txt");
         String actual = PythonToCoraString("examples/expression.py");

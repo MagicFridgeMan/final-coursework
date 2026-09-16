@@ -1,0 +1,4 @@
+multiparameter :: Int -> Int -> A
+private return_multiparameter :: Int -> A
+
+multiparameter(x, y) -> return_multiparameter(x)
