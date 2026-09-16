@@ -5,10 +5,7 @@ import LCTRSTree.Expressions.Variable;
 import LCTRSTree.Program;
 import parser.*;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * A visitor method extending the LctrsParserBaseVisitor and working with Void values. These visitor functions do not
@@ -134,12 +131,11 @@ public class FunctionVisitor extends LctrsParserBaseVisitor<Void> {
 
     @Override
     public Void visitWhile_stmt(LctrsParser.While_stmtContext ctx) {
-        String entrySymbol = currentSymbol;
         ArrayList<String> loopEntryParams = new ArrayList<>(parameters);
 
-        String loopSymbol = "l" + ++symbolCount;
-        program.addDeclaration(true, loopSymbol, parameters.size());
-        program.addRule(currentSymbol, parameters, loopSymbol, createExpressionList(parameters), "");
+        String loopEntrySymbol = "l" + ++symbolCount;
+        program.addDeclaration(true, loopEntrySymbol, parameters.size());
+        program.addRule(currentSymbol, parameters, loopEntrySymbol, createExpressionList(parameters), "");
 
         String[] constraintStrings = getConstraintStrings(ctx.constraint());
         String enterBranchConstraint = constraintStrings[0];
@@ -147,12 +143,12 @@ public class FunctionVisitor extends LctrsParserBaseVisitor<Void> {
 
         String branchExitSymbol = "l" + ++symbolCount;
         program.addDeclaration(true, branchExitSymbol, parameters.size());
-        program.addRule(loopSymbol, loopEntryParams,  branchExitSymbol, createExpressionList(loopEntryParams), skipBranchConstraint);
+        program.addRule(loopEntrySymbol, loopEntryParams,  branchExitSymbol, createExpressionList(loopEntryParams), skipBranchConstraint);
 
         parameters = new ArrayList<>(loopEntryParams);
-        currentSymbol = loopSymbol;
+        currentSymbol = loopEntrySymbol;
         constraint = enterBranchConstraint;
-        makeIfBranch(ctx.body(), loopSymbol);
+        makeIfBranch(ctx.body(), loopEntrySymbol);
 
         parameters = new ArrayList<>(loopEntryParams);
         currentSymbol = branchExitSymbol;
@@ -254,6 +250,10 @@ public class FunctionVisitor extends LctrsParserBaseVisitor<Void> {
      */
 
     private Void makeIfBranch(LctrsParser.BodyContext ctx , String exitBranchSymbol) {
+
+        if (ctx == null){
+            throw new MissingBodyException("Missing body in branching statement");
+        }
 
         Iterator<LctrsParser.StmtContext> iterator = ctx.stmt().iterator();
         while(iterator.hasNext()){
